@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
+    'apps.core',
+    'apps.user',
+    'apps.login',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +63,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,11 +85,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ["PGDATABASE"],
-        'USER': os.environ["PGUSER"],
-        'PASSWORD': os.environ["PGPASSWORD"],
-        'HOST': os.environ["PGHOST"],
-        'PORT': os.environ["PGPORT"],
+        'NAME': "railway",
+        'USER': "postgres",
+        'PASSWORD': "C6edgGDCEeC215-ac44B2-d5cEbd5B3F",
+        'HOST': "monorail.proxy.rlwy.net",
+        'PORT': "21599",
     }
 }
 
@@ -132,3 +136,24 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LANGUAGE_CODE = 'es-co'
+
+TIME_ZONE = 'America/Bogota'
+
+USE_I18N = True
+USE_L10N = True
+USE_TZ = False
+
+STATIC_URL = '/static/'
+
+STATIC_ROOT  = os.path.join(BASE_DIR, 'staticfiles/')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = '/core/dashboard/'
+
+LOGOUT_REDIRECT_URL = '/login/'
+
+LOGIN_URL = '/login/'
+AUTH_USER_MODEL = 'user.User'
